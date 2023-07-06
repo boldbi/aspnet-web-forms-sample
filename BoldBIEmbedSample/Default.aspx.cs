@@ -35,6 +35,16 @@ namespace BoldBIEmbedSample
 
         }
 
+        public static string GetDashboardId()
+        {
+            string embedConfigPath = HttpContext.Current.Server.MapPath("~/embedConfig.json");
+            string embedConfigContent = File.ReadAllText(embedConfigPath);
+
+            dynamic embedConfig = JsonConvert.DeserializeObject(embedConfigContent);
+
+            return embedConfig.DashboardId;
+        }
+
         //[WebMethod()]
         //public IActionResult GetConfig()
         //{

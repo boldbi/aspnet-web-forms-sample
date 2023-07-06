@@ -1,6 +1,6 @@
-﻿<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BoldBIEmbedSample.SiteMaster" %>--%>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BoldBIEmbedSample.SiteMaster" %>
 <%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample.Models" %>--%>
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample._Default" %>
+<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample._Default" %>--%>
 
 <!DOCTYPE html>
 
@@ -21,11 +21,19 @@
     <script type="text/javascript">
 
 
-    <%--<%--    <div>
-            <p>Dashboard ID: <%= ((_Default)this.Master).DashboardId %></p>
-     <p>Server URL: <%= ((SiteMaster)this.Master).ServerUrl %></p>
-     <p>User Email: <%= ((SiteMaster)this.Master).UserEmail %></p>
- </div>--%>--%>
+        //var aa = new SiteMaster;
+        //SiteMaster aa = new SiteMaster();
+<%--      var dash =  dashboardId;
+        siteIdentifier;
+    
+        var dashboardId = '<%= BoldBIEmbedSample.Global.RegisterModule %>';--%>
+        var dd = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
+        var cc = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
+        var aa = dd;
+
+<%--       
+        var dd = '<%= (BoldBIEmbedSample.SiteMaster)this.Page_Load.Replace(Environment.NewLine, "")>';
+        var aa = dashId;--%>
 
         //var jsonFilePath = Server.MapPath("~/embedConfig.json");
         //var aa = jsonFilePath;
@@ -34,10 +42,6 @@
         //var jsonData = serializer.Deserialize <EmbedDetails> (json);
 
 
-
-<%--           <p>Dashboard ID: <%= DashboardId %></p>
-        <p>Server URL: <%= ServerUrl %></p>
-        <p>User Email: <%= UserEmail %></p>--%>
         //async function fetchDataAndHandleErrors() {
         //    try {
         //        //const response = await fetch('/Default.aspx/GetConfig');
@@ -56,7 +60,7 @@
         //var dashboardId = "@GlobalAppSettings.EmbedDetails.DashboardId";
         //var siteIdentifier = "@GlobalAppSettings.EmbedDetails.SiteIdentifier";
         //var environment = "@GlobalAppSettings.EmbedDetails.Environment";
-        //var embedType = "@GlobalAppSettings.EmbedDetails.EmbedType";
+        //var embedType = "@GlobalAppSettings.EmbedDetails.EmbedType";--%>
 
 
         var rootUrl = "http://localhost:64173/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
