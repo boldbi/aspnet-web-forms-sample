@@ -20,66 +20,29 @@
     <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
     <script type="text/javascript">
 
-
-        //var aa = new SiteMaster;
-        //SiteMaster aa = new SiteMaster();
-<%--      var dash =  dashboardId;
-        siteIdentifier;
-    
-        var dashboardId = '<%= BoldBIEmbedSample.Global.RegisterModule %>';--%>
-        var dd = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
-        var cc = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
-        var aa = dd;
-
-<%--       
-        var dd = '<%= (BoldBIEmbedSample.SiteMaster)this.Page_Load.Replace(Environment.NewLine, "")>';
-        var aa = dashId;--%>
-
-        //var jsonFilePath = Server.MapPath("~/embedConfig.json");
-        //var aa = jsonFilePath;
-        //var json = File.ReadAllText(jsonFilePath);
-        //var serializer = new JavaScriptSerializer();
-        //var jsonData = serializer.Deserialize <EmbedDetails> (json);
+        var rootUrl = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
+        var dashboardId = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
+        var siteIdentifier = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.SiteIdentifier %>";
+        var environment = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.Environment %>";
+        var embedType = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.EmbedType %>";
 
 
-        //async function fetchDataAndHandleErrors() {
-        //    try {
-        //        //const response = await fetch('/Default.aspx/GetConfig');
-        //        const response = await fetch('/Default.aspx/Page_Load');
-        //        const embedConfig = await response.json();
-        //        data = embedConfig;
-        //    } catch (error) {
-        //        console.log("Content");
-        //        //window.location.href = "/Default.aspx/GetConfig"
-        //    }
-        //}
-
-        //fetchDataAndHandleErrors();
-
-        //var rootUrl = "@GlobalAppSettings.EmbedDetails.ServerUrl";
-        //var dashboardId = "@GlobalAppSettings.EmbedDetails.DashboardId";
-        //var siteIdentifier = "@GlobalAppSettings.EmbedDetails.SiteIdentifier";
-        //var environment = "@GlobalAppSettings.EmbedDetails.Environment";
-        //var embedType = "@GlobalAppSettings.EmbedDetails.EmbedType";--%>
-
-
-        var rootUrl = "http://localhost:64173/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
-        var siteIdentifier = "site/site1";   //  For Bold BI Enterprise edition, it should be like `site/site1`. For Bold BI Cloud, it should be empty string.
-        var environment = "enterprise";  // Your Bold BI application environment. (If Cloud, you should use `cloud`, if Enterprise, you should use `enterprise`)
-        var dashboardId = "121be55e-2007-4187-b8a5-a9d73a7eafea";  // Enter DashboardId you want to render
+        //var rootUrl = "http://localhost:64173/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
+        //var siteIdentifier = "site/site1";   //  For Bold BI Enterprise edition, it should be like `site/site1`. For Bold BI Cloud, it should be empty string.
+        //var environment = "enterprise";  // Your Bold BI application environment. (If Cloud, you should use `cloud`, if Enterprise, you should use `enterprise`)
+        //var dashboardId = "121be55e-2007-4187-b8a5-a9d73a7eafea";  // Enter DashboardId you want to render
         function Init() {
             this.dashboard = BoldBI.create({
                 serverUrl: rootUrl + "/" + siteIdentifier,
                 dashboardId: dashboardId,
                 embedContainerId: "dashboard",
-                embedType: BoldBI.EmbedType.Component,
-                environment: environment == "enterprise" ? BoldBI.Environment.Enterprise : BoldBI.Environment.Cloud,
+                embedType: embedType,
+                environment: environment,
                 width: "100%",
                 height: "100%",
                 expirationTime: 100000,
                 authorizationServer: {
                     url: "Default.aspx/GetEmbedDetails"
-                  //  url: "Default.aspx/GetEmbedDetails"
                 }
             });
             this.dashboard.loadDashboard();
