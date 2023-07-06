@@ -21,11 +21,6 @@ namespace BoldBIEmbedSample
 {
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-           
-        }
-
         //[WebMethod()]
         //public IActionResult GetConfig()
         //{
@@ -39,7 +34,7 @@ namespace BoldBIEmbedSample
         [WebMethod()]
         public static void GetEmbedDetails(string embedQuerString, string dashboardServerApiUrl)
         {
-            embedQuerString += "&embed_user_email=" + EmbedProperties.UserEmail;
+            embedQuerString += "&embed_user_email=" + GlobalAppSettings.EmbedDetails.UserEmail;
             //To set embed_server_timestamp to overcome the EmbedCodeValidation failing while different timezone using at client application.
             double timeStamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
             embedQuerString += "&embed_server_timestamp=" + timeStamp;
@@ -66,7 +61,7 @@ namespace BoldBIEmbedSample
         public static string GetSignatureUrl(string message)
         {
             var encoding = new System.Text.UTF8Encoding();
-            var keyBytes = encoding.GetBytes(EmbedProperties.EmbedSecret);
+            var keyBytes = encoding.GetBytes(GlobalAppSettings.EmbedDetails.EmbedSecret);
             var messageBytes = encoding.GetBytes(message);
             using (var hmacsha1 = new HMACSHA256(keyBytes))
             {
@@ -75,9 +70,9 @@ namespace BoldBIEmbedSample
             }
         }
 
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-        //}
+        }
     }
 }

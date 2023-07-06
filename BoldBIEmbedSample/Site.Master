@@ -1,6 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BoldBIEmbedSample.SiteMaster" %>
-<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample.Models" %>--%>
-<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample._Default" %>--%>
 
 <!DOCTYPE html>
 
@@ -19,18 +17,12 @@
     <link rel="stylesheet" href="~/Content/Site.css" />
     <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
     <script type="text/javascript">
-
         var rootUrl = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
         var dashboardId = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
         var siteIdentifier = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.SiteIdentifier %>";
         var environment = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.Environment %>";
         var embedType = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.EmbedType %>";
 
-
-        //var rootUrl = "http://localhost:64173/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
-        //var siteIdentifier = "site/site1";   //  For Bold BI Enterprise edition, it should be like `site/site1`. For Bold BI Cloud, it should be empty string.
-        //var environment = "enterprise";  // Your Bold BI application environment. (If Cloud, you should use `cloud`, if Enterprise, you should use `enterprise`)
-        //var dashboardId = "121be55e-2007-4187-b8a5-a9d73a7eafea";  // Enter DashboardId you want to render
         function Init() {
             this.dashboard = BoldBI.create({
                 serverUrl: rootUrl + "/" + siteIdentifier,
