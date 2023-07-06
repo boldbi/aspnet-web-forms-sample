@@ -18,7 +18,7 @@
     <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
     <script type="text/javascript">
 
-      <% try
+      <% if(BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails != null)
         { %>
         var rootUrl = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
         var dashboardId = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
@@ -26,8 +26,8 @@
         var environment = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.Environment %>";
         var embedType = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.EmbedType %>";
 
-    <% }
-        catch (Exception)
+      <% }
+        else
         { %>
         <% Response.Redirect("~/EmbedConfigErrorLog.aspx"); %>
         <% } %>
