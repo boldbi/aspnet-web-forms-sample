@@ -1,4 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BoldBIEmbedSample.SiteMaster" %>
+﻿<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BoldBIEmbedSample.SiteMaster" %>--%>
+<%--<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample.Models" %>--%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BoldBIEmbedSample._Default" %>
 
 <!DOCTYPE html>
 
@@ -15,12 +17,52 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="~/Content/Site.css" />
-    <script src="https://cdn.boldbi.com/embedded-sdk/v5.3.53/boldbi-embed.js"></script>
+    <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
     <script type="text/javascript">
-        var rootUrl = "http://localhost:54321/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
+
+
+    <%--<%--    <div>
+            <p>Dashboard ID: <%= ((_Default)this.Master).DashboardId %></p>
+     <p>Server URL: <%= ((SiteMaster)this.Master).ServerUrl %></p>
+     <p>User Email: <%= ((SiteMaster)this.Master).UserEmail %></p>
+ </div>--%>--%>
+
+        //var jsonFilePath = Server.MapPath("~/embedConfig.json");
+        //var aa = jsonFilePath;
+        //var json = File.ReadAllText(jsonFilePath);
+        //var serializer = new JavaScriptSerializer();
+        //var jsonData = serializer.Deserialize <EmbedDetails> (json);
+
+
+
+<%--           <p>Dashboard ID: <%= DashboardId %></p>
+        <p>Server URL: <%= ServerUrl %></p>
+        <p>User Email: <%= UserEmail %></p>--%>
+        //async function fetchDataAndHandleErrors() {
+        //    try {
+        //        //const response = await fetch('/Default.aspx/GetConfig');
+        //        const response = await fetch('/Default.aspx/Page_Load');
+        //        const embedConfig = await response.json();
+        //        data = embedConfig;
+        //    } catch (error) {
+        //        console.log("Content");
+        //        //window.location.href = "/Default.aspx/GetConfig"
+        //    }
+        //}
+
+        //fetchDataAndHandleErrors();
+
+        //var rootUrl = "@GlobalAppSettings.EmbedDetails.ServerUrl";
+        //var dashboardId = "@GlobalAppSettings.EmbedDetails.DashboardId";
+        //var siteIdentifier = "@GlobalAppSettings.EmbedDetails.SiteIdentifier";
+        //var environment = "@GlobalAppSettings.EmbedDetails.Environment";
+        //var embedType = "@GlobalAppSettings.EmbedDetails.EmbedType";
+
+
+        var rootUrl = "http://localhost:64173/bi";   // Dashboard Server BI URL(ex: http://localhost:5000/bi, http://demo.boldbi.com/bi)
         var siteIdentifier = "site/site1";   //  For Bold BI Enterprise edition, it should be like `site/site1`. For Bold BI Cloud, it should be empty string.
         var environment = "enterprise";  // Your Bold BI application environment. (If Cloud, you should use `cloud`, if Enterprise, you should use `enterprise`)
-        var dashboardId = "";  // Enter DashboardId you want to render
+        var dashboardId = "121be55e-2007-4187-b8a5-a9d73a7eafea";  // Enter DashboardId you want to render
         function Init() {
             this.dashboard = BoldBI.create({
                 serverUrl: rootUrl + "/" + siteIdentifier,
@@ -33,6 +75,7 @@
                 expirationTime: 100000,
                 authorizationServer: {
                     url: "Default.aspx/GetEmbedDetails"
+                  //  url: "Default.aspx/GetEmbedDetails"
                 }
             });
             this.dashboard.loadDashboard();

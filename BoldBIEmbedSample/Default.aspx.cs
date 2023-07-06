@@ -1,17 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Web;
+using System.Web.ModelBinding;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BoldBIEmbedSample.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace BoldBIEmbedSample
 {
     public partial class _Default : Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string jsonFilePath = Server.MapPath("~/embedConfig.json"); // Path to the JSON file
+            string json = File.ReadAllText(jsonFilePath);
+            var serializer = new JavaScriptSerializer();
+            var jsonData = serializer.Deserialize<EmbedDetails>(json);
+            string dashboardId = jsonData.DashboardId;
+            string serverUrl = jsonData.ServerUrl;
+            string userEmail = jsonData.UserEmail;
+
+            //  var message = "content";
+
+        }
+
+        //[WebMethod()]
+        //public IActionResult GetConfig()
+        //{
+        //    var jsonData = System.IO.File.ReadAllText("embedConfig.json");
+        //    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+        //    string jsonString = System.IO.File.ReadAllText(Path.Combine(basePath, "embedConfig.json"));
+        //    GlobalAppSettings.EmbedDetails = JsonConvert.DeserializeObject<EmbedDetails>(jsonString);
+        //    return OK(jsonData);
+        //}
+
         [WebMethod()]
         public static void GetEmbedDetails(string embedQuerString, string dashboardServerApiUrl)
         {
@@ -51,9 +84,9 @@ namespace BoldBIEmbedSample
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }
