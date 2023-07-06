@@ -15,7 +15,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="~/Content/Site.css" />
-    <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
+    <script src="https://cdn.boldbi.com/embedded-sdk/latest/boldbi-embed.js"></script>
     <script type="text/javascript">
 
       <% if(BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails != null)
