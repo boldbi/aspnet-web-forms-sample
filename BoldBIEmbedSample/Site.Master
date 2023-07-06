@@ -17,11 +17,20 @@
     <link rel="stylesheet" href="~/Content/Site.css" />
     <script src="https://cdn.boldbi.com/embedded-sdk/v6.7.11/boldbi-embed.js"></script>
     <script type="text/javascript">
+
+      <% try
+        { %>
         var rootUrl = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
         var dashboardId = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
         var siteIdentifier = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.SiteIdentifier %>";
         var environment = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.Environment %>";
         var embedType = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.EmbedType %>";
+
+    <% }
+        catch (Exception)
+        { %>
+        <% Response.Redirect("~/EmbedConfigErrorLog.aspx"); %>
+        <% } %>
 
         function Init() {
             this.dashboard = BoldBI.create({

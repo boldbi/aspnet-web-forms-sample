@@ -28,10 +28,7 @@ namespace BoldBIEmbedSample
             }
             catch
             {
-                //  Server.Transfer("~/Default.aspx/Default.aspx.cs");\
-                // Response.Redirect("~/Default.aspx");
-                RouteTable.Routes.MapPageRoute("EmbedConfigPageRoute", "EmbedConfigErrorLog", "~/EmbedConfigErrorLog.aspx");
-
+               RouteTable.Routes.MapPageRoute("EmbedConfigPageRoute", "EmbedConfigErrorLog", "~/EmbedConfigErrorLog.aspx");
             }
         }
     }

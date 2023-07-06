@@ -148,3 +148,12 @@ ul {
     padding: 0;
     margin: 0;
 }
+
+#sample_dialog_footer #custom_ok_button {
+    float: right;
+    margin-right: 17px;
+}
+
+#sample_dialog_footer {
+    height: 29px;
+}

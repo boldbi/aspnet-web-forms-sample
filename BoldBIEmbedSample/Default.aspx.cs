@@ -21,16 +21,6 @@ namespace BoldBIEmbedSample
 {
     public partial class _Default : Page
     {
-        //[WebMethod()]
-        //public IActionResult GetConfig()
-        //{
-        //    var jsonData = System.IO.File.ReadAllText("embedConfig.json");
-        //    string basePath = AppDomain.CurrentDomain.BaseDirectory;
-        //    string jsonString = System.IO.File.ReadAllText(Path.Combine(basePath, "embedConfig.json"));
-        //    GlobalAppSettings.EmbedDetails = JsonConvert.DeserializeObject<EmbedDetails>(jsonString);
-        //    return OK(jsonData);
-        //}
-
         [WebMethod()]
         public static void GetEmbedDetails(string embedQuerString, string dashboardServerApiUrl)
         {
