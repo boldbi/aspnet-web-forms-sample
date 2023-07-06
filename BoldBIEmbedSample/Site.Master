@@ -49,7 +49,6 @@
             this.dashboard.loadDashboard();
         }
     </script>
-
 </head>
 <body onload="Init()">
     <form runat="server" style="height: 100%">

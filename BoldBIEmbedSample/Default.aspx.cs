@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Web;
-using System.Web.ModelBinding;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BoldBIEmbedSample.Models;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 namespace BoldBIEmbedSample
 {
     public partial class _Default : Page
