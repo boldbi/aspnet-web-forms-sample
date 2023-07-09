@@ -8,6 +8,7 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
 
  ## Requirements/Prerequisites
 
+ * [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
  * [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
  #### Help link
@@ -35,7 +36,7 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
 
  ## Developer IDE
 
-  * Visual studio code(https://code.visualstudio.com/download)
+  * Visual Studio 2022(https://visualstudio.microsoft.com/downloads/)
 
  ### Run a Sample Using Visual Studio 2022
  
@@ -45,7 +46,7 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
 
     ![dashboard image](https://github.com/boldbi/aspnet-core-sample/assets/91586758/4af68f49-ffc0-400a-a323-55a3f3600a1d)
 
-Please refer to the [help documentation](help.boldbi.com/embedding-options/embedding-sdk/samples/asp-net-web-forms/#how-to-run-the-sample) to know how to run the sample.
+Please refer to the [help documentation](https://help.boldbi.com/embedding-options/embedding-sdk/samples/asp-net-web-forms/#how-to-run-the-sample) to know how to run the sample.
 
 ## Online Demos
 
