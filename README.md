@@ -11,10 +11,6 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
  * [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
  * [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
- #### Help link
-
- * https://help.boldbi.com/embedded-bi/faq/where-can-i-find-the-product-version/
-
  #### Supported browsers
   
   * Google Chrome, Microsoft Edge, Mozilla Firefox.
