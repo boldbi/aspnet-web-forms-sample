@@ -13,7 +13,7 @@ namespace BoldBIEmbedSample
     public partial class _Default : Page
     {
         [WebMethod()]
-        public static void GetEmbedDetails(string embedQuerString, string dashboardServerApiUrl)
+        public static void AuthorizationServer(string embedQuerString, string dashboardServerApiUrl)
         {
             embedQuerString += "&embed_user_email=" + GlobalAppSettings.EmbedDetails.UserEmail;
             //To set embed_server_timestamp to overcome the EmbedCodeValidation failing while different timezone using at client application.

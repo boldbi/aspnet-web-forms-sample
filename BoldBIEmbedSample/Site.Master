@@ -38,7 +38,7 @@
                 height: "100%",
                 expirationTime: 100000,
                 authorizationServer: {
-                    url: "Default.aspx/GetEmbedDetails"
+                    url: "Default.aspx/AuthorizationServer"
                 }
             });
             this.dashboard.loadDashboard();
