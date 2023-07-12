@@ -4,7 +4,7 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
 
 ## Dashboard view
 
-![Dashboard View](https://github.com/boldbi/aspnet-core-sample/assets/91586758/4af68f49-ffc0-400a-a323-55a3f3600a1d)
+![Dashboard View](https://github.com/boldbi/aspnet-core-sample/assets/91586758/a71d87e1-6ec9-48ce-8b27-444f13bca6e7)
 
  ## Requirements/Prerequisites
 
@@ -40,7 +40,7 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
  
   * Run your `ASP.NET WebForms` sample in Visual Studio.
 
-    ![dashboard image](https://github.com/boldbi/aspnet-core-sample/assets/91586758/4af68f49-ffc0-400a-a323-55a3f3600a1d)
+    ![dashboard image](https://github.com/boldbi/aspnet-core-sample/assets/91586758/a71d87e1-6ec9-48ce-8b27-444f13bca6e7)
 
 Please refer to the [help documentation](https://help.boldbi.com/embedding-options/embedding-sdk/samples/asp-net-web-forms/#how-to-run-the-sample) to know how to run the sample.
 
