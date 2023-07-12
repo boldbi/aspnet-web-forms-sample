@@ -28,26 +28,6 @@ ul {
     background-color: burlywood;
 }
 
-.e-dbrd-blueWaitingIndcator {
-    -webkit-animation: rotate 2s linear infinite;
-    animation: rotate 2s linear infinite;
-    height: 54px;
-    width: 54px;
-    top: 50%;
-    left: 50%;
-    position: relative;
-}
-
-.e-waiting {
-    position: fixed;
-    display: block;
-    margin: 0px auto;
-    width: 54px;
-    height: 54px;
-    zoom: 0.5;
-    margin-left: 55px;
-}
-
 #container {
     width: 13%;
     float: left;
@@ -147,4 +127,13 @@ ul {
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+#sample_dialog_footer #custom_ok_button {
+    float: right;
+    margin-right: 17px;
+}
+
+#sample_dialog_footer {
+    height: 29px;
 }
