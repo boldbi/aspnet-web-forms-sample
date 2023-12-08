@@ -12,12 +12,19 @@
     <link rel="stylesheet" href="~/Content/Site.css" />
     <script src="https://cdn.boldbi.com/embedded-sdk/latest/boldbi-embed.js"></script>
     <script type="text/javascript">
+        <% if(BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails != null)
+        { %>
         var embedConfigData = <%= GetClientEmbedConfigJson() %>;
         var dashboardId = embedConfigData.DashboardId;
         var siteIdentifier = embedConfigData.SiteIdentifier;
         var rootUrl = embedConfigData.ServerUrl;
         var embedType = embedConfigData.EmbedType;
         var environment = embedConfigData.Environment;
+        <% }
+        else
+        { %>
+        <% Response.Redirect("~/EmbedConfigErrorLog.aspx"); %>
+        <% } %>
 
         function Init() {
             this.dashboard = BoldBI.create({
