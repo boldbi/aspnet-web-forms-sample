@@ -10,46 +10,25 @@ using System.Web.UI.WebControls;
 namespace BoldBIEmbedSample
 {
     public partial class SiteMaster : MasterPage
-    {
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-            protected string GetDashboardInfoJson()
-            {
-            DashboardInfo dashboardInfo1 = null;
+    {        
+        protected string GetClientEmbedConfigJson()
+        {
             string embedConfigPath = Server.MapPath("~/embedConfig.json");
             string jsonString = System.IO.File.ReadAllText(embedConfigPath);
             GlobalAppSettings.EmbedDetails = JsonConvert.DeserializeObject<EmbedDetails>(jsonString);
 
-
-            // Check for null to avoid potential issues
-            if (GlobalAppSettings.EmbedDetails != null)
+            var embedConfig = new EmbedDetails
             {
-                // Create an instance of DashboardInfo and set properties
-                 dashboardInfo1 = new DashboardInfo
-                {
-                    DashboardId = GlobalAppSettings.EmbedDetails.DashboardId,
-                    SiteIdentifier = GlobalAppSettings.EmbedDetails.SiteIdentifier,
-                    ServerUrl = GlobalAppSettings.EmbedDetails.ServerUrl,
-                    EmbedType = GlobalAppSettings.EmbedDetails.EmbedType,
-                    Environment = GlobalAppSettings.EmbedDetails.Environment
-                };
+                DashboardId = GlobalAppSettings.EmbedDetails.DashboardId,
+                SiteIdentifier = GlobalAppSettings.EmbedDetails.SiteIdentifier,
+                ServerUrl = GlobalAppSettings.EmbedDetails.ServerUrl,
+                EmbedType = GlobalAppSettings.EmbedDetails.EmbedType,
+                Environment = GlobalAppSettings.EmbedDetails.Environment
+            };
 
-            }
-            HttpContext.Current.Items["DashboardInfo"] = dashboardInfo1;
-            // Retrieve the dashboardInfo from HttpContext.Current.Items
-            var dashboardInfo = HttpContext.Current.Items["DashboardInfo"] as DashboardInfo;
-
-                if (dashboardInfo != null)
-                {
-                    // Serialize the dashboardInfo to JSON
-                    return JsonConvert.SerializeObject(dashboardInfo);
-                }
-                else
-                {
-                    // Return an empty object if dashboardInfo is null
-                    return "{}";
-                }
-            }
-        //}
+            HttpContext.Current.Items["EmbedConfigData"] = embedConfig;
+            var embedConfigData = HttpContext.Current.Items["EmbedConfigData"] as EmbedDetails;
+            return JsonConvert.SerializeObject(embedConfigData);
+        }
     }
 }
