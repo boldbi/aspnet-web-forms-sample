@@ -12,16 +12,15 @@
     <link rel="stylesheet" href="~/Content/Site.css" />
     <script src="https://cdn.boldbi.com/embedded-sdk/latest/boldbi-embed.js"></script>
     <script type="text/javascript">
-
-      <% if(BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails != null)
+        <% if(BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails != null)
         { %>
-        var rootUrl = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.ServerUrl %>";
-        var dashboardId = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.DashboardId %>";
-        var siteIdentifier = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.SiteIdentifier %>";
-        var environment = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.Environment %>";
-        var embedType = "<%= BoldBIEmbedSample.Models.GlobalAppSettings.EmbedDetails.EmbedType %>";
-
-      <% }
+        var embedConfigData = <%= GetClientEmbedConfigJson() %>;
+        var dashboardId = embedConfigData.DashboardId;
+        var siteIdentifier = embedConfigData.SiteIdentifier;
+        var rootUrl = embedConfigData.ServerUrl;
+        var embedType = embedConfigData.EmbedType;
+        var environment = embedConfigData.Environment;
+        <% }
         else
         { %>
         <% Response.Redirect("~/EmbedConfigErrorLog.aspx"); %>
