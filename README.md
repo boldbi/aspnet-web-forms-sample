@@ -6,39 +6,39 @@ This project was created using ASP.NET WebForms 4.8. This application aims to de
 
 ![Dashboard View](https://github.com/boldbi/aspnet-core-sample/assets/91586758/a71d87e1-6ec9-48ce-8b27-444f13bca6e7)
 
- ## Requirements/Prerequisites
+## Requirements/Prerequisites
 
- * [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
- * [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+* [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework)
 
- #### Supported browsers
+### Supported browsers
   
-  * Google Chrome, Microsoft Edge, Mozilla Firefox.
+* Google Chrome, Microsoft Edge, Mozilla Firefox.
 
- ## Configuration
+## Configuration
 
-  * Please ensure you have enabled embed authentication on the `embed settings` page. If it is not currently enabled, please refer to the following image or detailed [instructions](https://help.boldbi.com/site-administration/embed-settings/#get-embed-secret-code) to enable it.
+* Please ensure you have enabled embed authentication on the `embed settings` page. If it is not currently enabled, please refer to the following image or detailed [instructions](https://help.boldbi.com/site-administration/embed-settings/#get-embed-secret-code) to enable it.
 
     ![Embed Settings](https://github.com/boldbi/aspnet-core-sample/assets/91586758/b3a81978-9eb4-42b2-92bb-d1e2735ab007)
 
-  * To download the `embedConfig.json` file, please follow this [link](https://help.boldbi.com/site-administration/embed-settings/#get-embed-configuration-file) for reference. Additionally, you can refer to the following image for visual guidance.
+* To download the `embedConfig.json` file, please follow this [link](https://help.boldbi.com/site-administration/embed-settings/#get-embed-configuration-file) for reference. Additionally, you can refer to the following image for visual guidance.
 
      ![Embed Settings Download](https://github.com/boldbi/aspnet-core-sample/assets/91586758/d27d4cfc-6a3e-4c34-975e-f5f22dea6172)
      ![EmbedConfig Properties](https://github.com/boldbi/aspnet-core-sample/assets/91586758/d6ce925a-0d4c-45d2-817e-24d6d59e0d63)
 
-  * Copy the downloaded `embedConfig.json` file and paste it into the designated [location](https://github.com/boldbi/aspnet-web-forms-sample/tree/master/BoldBIEmbedSample) within the application. Please ensure you have placed it in the application, as shown in the following image.
-    
+* Copy the downloaded `embedConfig.json` file and paste it into the designated [location](https://github.com/boldbi/aspnet-web-forms-sample/tree/master/BoldBIEmbedSample) within the application. Please ensure you have placed it in the application, as shown in the following image.
+
     ![EmbedConfig image](https://github.com/boldbi/aspnet-core-sample/assets/91586758/804f9f7c-e922-44f2-b197-69e74413528b)
 
- ## Developer IDE
+## Developer IDE
 
-  * Visual Studio 2022(https://visualstudio.microsoft.com/downloads/)
+* Visual Studio 2022(<https://visualstudio.microsoft.com/downloads/>)
 
- ### Run a Sample Using Visual Studio 2022
- 
-  * Open the solution file `BoldBI.Embed.Sample.sln` in Visual studio. 
- 
-  * Run your `ASP.NET WebForms` sample in Visual Studio.
+### Run a Sample Using Visual Studio 2022
+
+* Open the solution file `BoldBI.Embed.Sample.sln` in Visual studio.
+
+* Run your `ASP.NET WebForms` sample in Visual Studio.
 
     ![dashboard image](https://github.com/boldbi/aspnet-core-sample/assets/91586758/a71d87e1-6ec9-48ce-8b27-444f13bca6e7)
 
