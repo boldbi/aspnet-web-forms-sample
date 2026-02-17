@@ -26,22 +26,37 @@
         <% Response.Redirect("~/EmbedConfigErrorLog.aspx"); %>
         <% } %>
 
-        function Init() {
-            this.dashboard = BoldBI.create({
-                serverUrl: rootUrl + "/" + siteIdentifier,
-                dashboardId: dashboardId,
-                embedContainerId: "dashboard",
-                width: "100%",
-                height: "100%",
-                authorizationServer: {
-                    url: "Default.aspx/AuthorizationServer"
-                }
+        function getEmbedToken() {
+            return fetch("Default.aspx/TokenGeneration", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Token fetch failed");
+                return response.text();
             });
-            this.dashboard.loadDashboard();
         }
+
+        function renderDashboard(dashboardId) {
+            getEmbedToken()
+                .then(accessToken => {
+                    const dashboard = BoldBI.create({
+                        serverUrl: rootUrl + "/" + siteIdentifier,
+                        dashboardId: dashboardId,
+                        embedContainerId: "dashboard",
+                        embedToken: accessToken
+                    });
+
+                    dashboard.loadDashboard();
+                })
+                .catch(err => {
+                    console.error("Error rendering dashboard:", err);
+                });
+        };
     </script>
 </head>
-<body onload="Init()">
+<body onload="renderDashboard(dashboardId)">
     <form runat="server" style="height: 100%">
         <div class="container body-content" style="height: 100%">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
