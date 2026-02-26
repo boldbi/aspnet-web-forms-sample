@@ -1,54 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Security.Cryptography;
-using System.Web;
+using System.Text;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using BoldBIEmbedSample.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace BoldBIEmbedSample
 {
     public partial class _Default : Page
     {
         [WebMethod()]
-        public static void AuthorizationServer(string embedQuerString, string dashboardServerApiUrl)
+        public static string TokenGeneration()
         {
-            embedQuerString += "&embed_user_email=" + GlobalAppSettings.EmbedDetails.UserEmail;
-            //To set embed_server_timestamp to overcome the EmbedCodeValidation failing while different timezone using at client application.
-            double timeStamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-            embedQuerString += "&embed_server_timestamp=" + timeStamp;
-            var embedDetailsUrl = "/embed/authorize?" + embedQuerString + "&embed_signature=" + GetSignatureUrl(embedQuerString);
-
-            using (var client = new HttpClient())
+            var embedDetails = new
             {
-                client.BaseAddress = new Uri(dashboardServerApiUrl);
-                client.DefaultRequestHeaders.Accept.Clear();
+                email = GlobalAppSettings.EmbedDetails.UserEmail,
+                serverurl = GlobalAppSettings.EmbedDetails.ServerUrl,
+                siteidentifier = GlobalAppSettings.EmbedDetails.SiteIdentifier,
+                embedsecret = GlobalAppSettings.EmbedDetails.EmbedSecret,
+                dashboard = new  // Dashboard ID property is mandatory only when using BoldBI version 14.1.11.
+                {
+                    id = GlobalAppSettings.EmbedDetails.DashboardId
+                }
+            };
 
-                var result = client.GetAsync(dashboardServerApiUrl + embedDetailsUrl).Result;
-                string resultContent = result.Content.ReadAsStringAsync().Result;
-                //return resultContent;
-                var js = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //Post call to Bold BI server
+            var client = new HttpClient();
+            var requestUrl = $"{embedDetails.serverurl}/api/{embedDetails.siteidentifier}/embed/authorize";
 
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ContentType = "application/json; charset=utf-8";
-                HttpContext.Current.Response.Write(js.Serialize(resultContent));
-                HttpContext.Current.Response.Flush();
-                HttpContext.Current.Response.End();
-            }
-        }
+            var jsonPayload = JsonConvert.SerializeObject(embedDetails);
+            var httpContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-        public static string GetSignatureUrl(string message)
-        {
-            var encoding = new System.Text.UTF8Encoding();
-            var keyBytes = encoding.GetBytes(GlobalAppSettings.EmbedDetails.EmbedSecret);
-            var messageBytes = encoding.GetBytes(message);
-            using (var hmacsha1 = new HMACSHA256(keyBytes))
-            {
-                var hashMessage = hmacsha1.ComputeHash(messageBytes);
-                return Convert.ToBase64String(hashMessage);
-            }
+            var result = client.PostAsync(requestUrl, httpContent).Result;
+            var resultContent = result.Content.ReadAsStringAsync().Result;
+
+            // Extract token from server response
+            var json = JObject.Parse(resultContent);
+            var token = json["Data"]?["access_token"]?.ToString() ?? json["access_token"]?.ToString();
+
+            // Write raw token to the HTTP response so client-side `response.text()` returns the token string
+            var resp = System.Web.HttpContext.Current.Response;
+            resp.Clear();
+            resp.ContentType = "text/plain";
+            resp.Write(token);
+            resp.Flush();
+            resp.End();
+
+            return token;
         }
 
         protected void Page_Load(object sender, EventArgs e)
